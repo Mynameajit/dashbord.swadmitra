@@ -53,11 +53,11 @@ const ShopDetailsForm = () => {
 
   const { isShopCreated } = useSelector((state) => state.shop);
 
-  // useEffect(() => {
-  //   if (isShopCreated) {
-  //     navigate("/owner/approval-pending");
-  //   }
-  // }, [isShopCreated, navigate]);
+  useEffect(() => {
+    if (isShopCreated) {
+      navigate("/owner/approval-pending");
+    }
+  }, [isShopCreated, navigate]);
 
   /* ================= FORM STATE ================= */
   const [form, setForm] = useState({

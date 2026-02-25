@@ -13,9 +13,7 @@ import { getShop } from "../../features/owner/shop/shopService";
 const OwnerRegister = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { user, isAuthenticated } = useSelector((state) => state.user);
-  const { shop, isShopCreated } = useSelector((state) => state.shop);
-
+  const { user, isAuthenticated, loading } = useSelector((state) => state.user);
 
   const [formData, setFormData] = useState({
     fullName: "",
@@ -161,7 +159,14 @@ const OwnerRegister = () => {
                     },
                   }}
                 >
-                  Create Owner Account
+                  {loading.register ? (
+                    <>
+                      <CircularProgress size={20} sx={{ color: "#fff" }} />
+                      Creating...
+                    </>
+                  ) : (
+                    "Create Owner Account"
+                  )}
                 </Button>
 
                 <Typography fontSize={13} textAlign="center">

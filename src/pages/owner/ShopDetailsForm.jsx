@@ -20,7 +20,6 @@ import dayjs from "dayjs";
 
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 
-
 /* ================= ANIMATION ================= */
 const containerVariants = {
   hidden: { opacity: 0, y: 25 },
@@ -53,11 +52,11 @@ const ShopDetailsForm = () => {
 
   const { isShopCreated } = useSelector((state) => state.shop);
 
-  useEffect(() => {
-    if (isShopCreated) {
-      navigate("/owner/approval-pending");
-    }
-  }, [isShopCreated, navigate]);
+  // useEffect(() => {
+  //   if (isShopCreated) {
+  //     navigate("/owner/approval-pending");
+  //   }
+  // }, [isShopCreated, navigate]);
 
   /* ================= FORM STATE ================= */
   const [form, setForm] = useState({
@@ -134,8 +133,8 @@ const ShopDetailsForm = () => {
       formData.append("image", image);
 
       await dispatch(createShop(formData)).unwrap();
-
       toast.success("Shop submitted successfully");
+      navigate("/owner/approval-pending", { replace: true });
     } catch (error) {
       toast.error(error?.message || "Something went wrong");
     }
@@ -271,7 +270,12 @@ const ShopDetailsForm = () => {
             />
           </Stack>
 
-          <Stack width={"100%"} direction={{ xs: "column", md: "row" }} gap={2} alignItems={"center"}>
+          <Stack
+            width={"100%"}
+            direction={{ xs: "column", md: "row" }}
+            gap={2}
+            alignItems={"center"}
+          >
             {/* ================= SHOP TIMING ================= */}
             <Stack
               width={"100%"}

@@ -17,6 +17,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { loginOwner } from "../../features/auth/authService";
 import { getRedirectPath } from "../../routes/authRedirect";
 import { getShop } from "../../features/owner/shop/shopService";
+import toast from "react-hot-toast";
 
 const DashboardLogin = () => {
   const navigate = useNavigate();
@@ -62,7 +63,12 @@ const DashboardLogin = () => {
         }}
       >
         {/* ================= LEFT CONTENT ================= */}
-        <Box flex={1} px={{ xs: 3, md: 6 }} display="flex" alignItems="center">
+        <Box
+          flex={1}
+          px={{ xs: 3, md: 6 }}
+          display={{ xs: "none", md: "flex" }}
+          alignItems="center"
+        >
           <motion.div
             initial={{ opacity: 0, x: -80 }}
             animate={{ opacity: 1, x: 0 }}
@@ -233,7 +239,8 @@ const DashboardLogin = () => {
                     </NavLink>
 
                     <NavLink
-                      to="/register-delivery"
+                      // to="/register-delivery"
+                      onClick={()=>toast.error("Feature not available")}
                       style={{ textDecoration: "none" }}
                     >
                       <Box

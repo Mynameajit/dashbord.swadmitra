@@ -62,7 +62,12 @@ const OwnerRegister = () => {
         }}
       >
         {/* LEFT */}
-        <Box flex={1} px={{ xs: 3, md: 6 }} display="flex" alignItems="center">
+        <Box
+          flex={1}
+          px={{ xs: 3, md: 6 }}
+          display={{ xs: "none", md: "flex" }}
+          alignItems="center"
+        >
           <motion.div
             initial={{ opacity: 0, x: -80 }}
             animate={{ opacity: 1, x: 0 }}
